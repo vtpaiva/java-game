@@ -10,6 +10,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que performar as operações de salvar e carregar o jogo.
 public class SaveLoad implements Serializable {
     private MyPanel gamePanel;
 
@@ -25,8 +29,7 @@ public class SaveLoad implements Serializable {
         this.gamePanel = gamePanel;
     }
     
-    
-
+//  Método que salva o painel de jogo em um arquivo "save.dat".
     public void save() throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("save.dat")))) {
             DataStorage ds = new DataStorage(this.gamePanel);
@@ -37,6 +40,8 @@ public class SaveLoad implements Serializable {
         }
     }
 
+//  Método que carrega o arquivo "save.dat" e implementa o estado atual do painel salvo no
+//  arquivo ao painel de jogo atual.
     public void load() throws IOException, ClassNotFoundException {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File("save.dat")))) {
             DataStorage ds = (DataStorage) ois.readObject();

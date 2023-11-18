@@ -3,6 +3,11 @@ package Controle;
 import Entidades.MyPanel;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que armazena uma instância de uma painel de jogo, o qual contém todos os dados
+//  do jogo no momento em que o usuário salva o jogo.
 public class DataStorage implements Serializable {
     private MyPanel gamePanel;
     

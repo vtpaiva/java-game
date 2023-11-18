@@ -12,6 +12,10 @@ import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Instância de listener que monitora a entrada do usuário.
 public class Movimento implements KeyListener, MouseListener, MouseMotionListener, Serializable{
     private MyPanel panel;
     private boolean listenActive;
@@ -63,13 +67,13 @@ public class Movimento implements KeyListener, MouseListener, MouseMotionListene
             }
             }
             case KeyEvent.VK_Z -> {
-                panel.addInimigo(new InimigoBase("enemy.png", 
+                panel.addInimigo(new InimigoBase("enemy.png",
                                                     (int) MouseInfo.getPointerInfo().getLocation().getX() - panel.getX(), 
                                                     (int) MouseInfo.getPointerInfo().getLocation().getY() - panel.getY(), 
                                                     3, Consts.CHAR_BASE, Consts.CHAR_BASE, panel, 0));
             }
             case KeyEvent.VK_X -> {
-                panel.addInimigo(new InimigoSniper("enemy.png", 
+                panel.addInimigo(new InimigoSniper("enemy.png",
                                                     (int) MouseInfo.getPointerInfo().getLocation().getX() - panel.getX(), 
                                                     (int) MouseInfo.getPointerInfo().getLocation().getY() - panel.getY(), 
                                                     3, Consts.CHAR_BASE, Consts.CHAR_BASE, panel, 0));
