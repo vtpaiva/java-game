@@ -10,13 +10,21 @@ import java.util.Random;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que representa um inimigo do painel de jogo, o qual possui uma alcance de
+//  de tiro, um alcance de visão, o qual de tecta o herói e uma variável que
+//  representa o estado de caça do herói.
 public abstract class Inimigo extends Personagem implements Serializable{
     private Ellipse2D range, vision;
+    private String deadSprite;
     private int width, height, rangeRadius, visionRadius;
     private boolean hunt;
     
     public Inimigo(String path, int linha, int coluna, int vida, int entityWidth, int entityHeight, MyPanel gamePanel, double angle) {
         super(path, linha, coluna, vida, entityWidth, entityHeight, gamePanel, angle);
+       
         this.updateRange();
         this.updateVision();
     }
@@ -76,6 +84,16 @@ public abstract class Inimigo extends Personagem implements Serializable{
     public void setHunt(boolean hunt) {
         this.hunt = hunt;
     }
+
+    public String getDeadSprite() {
+        return deadSprite;
+    }
+
+    public final void setDeadSprite(String deadSprite) {
+        this.deadSprite = deadSprite;
+    }
+    
+//  Métodos que atualizam a posição das hitbox dos alcances de visão e de tiro.
     
     public final void updateRange() {
         this.range = new Ellipse2D.Double(this.getX() - rangeRadius/2 + width/2, this.getY() - rangeRadius/2 + height/2, rangeRadius, rangeRadius);
@@ -85,6 +103,7 @@ public abstract class Inimigo extends Personagem implements Serializable{
         this.vision = new Ellipse2D.Double(this.getX() - visionRadius/2 + width/2, this.getY() - visionRadius/2 + height/2, visionRadius, visionRadius);
     }
     
+//  Método que rotaciona o inimigo em relação ao herói do painel de jogo.
     public void rotate() {
         BufferedImage rotatedImage = new BufferedImage(this.getSprite().getWidth(), this.getSprite().getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = rotatedImage.createGraphics();
@@ -98,6 +117,8 @@ public abstract class Inimigo extends Personagem implements Serializable{
         
         this.setRotateSprite(rotatedImage);
     }
+    
+//  Métodos que validam a posição futura do inimigo.
     
     public int posicaoXValida() {
             Rectangle2D novaPos = new Rectangle2D.Double(this.getX() + (gamePanel.getHero().getX() - this.getX())/40, this.getY(), this.getHitbox().getWidth(), this.getHitbox().getHeight());
@@ -139,37 +160,37 @@ public abstract class Inimigo extends Personagem implements Serializable{
         return !(this.range.intersects(this.gamePanel.getHero().getHitbox()));
     }
     
+//  Método que verifica se o inimigo está morto e, caso esteja, há uma probabilidade
+//  de que seja gerado um power-up e é adicionado ao mapa o cadáver do inimigo.
     private boolean inimigoMorto() {
         if(this.getVida() > 0) {return true;}
-        this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Corpo("dead.png", 
+        this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Corpo(this.getDeadSprite(), 
                                                             this.getX(), 
                                                            this.getY(), 
-                                                                 Consts.TILE_WIDTH*2, 
-                                                                 Consts.TILE_HEIGHT*2, 
+                                                                 Consts.TILE_WIDTH * 2, 
+                                                       Consts.TILE_HEIGHT, 
                                                          this.gamePanel));
         switch((new Random()).nextInt() % 4) {
-            case 0:
-                this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Vida("bandage.png",
+            case 0 -> this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Vida("bandage.png",
                                              this.getX(),
                                              this.getY(),
                                              Consts.TILE_WIDTH,
                                              Consts.TILE_HEIGHT,
-                                             this.gamePanel)); 
-                break;
-            case 1:
-                this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Municao("ammo.png",
+                                             this.gamePanel));
+            case 1 -> this.gamePanel.getFaseAtual().getEntidadeAtual().add(new Municao("ammo.png",
                                              this.getX(),
                                              this.getY(),
                                              Consts.TILE_WIDTH,
                                              Consts.TILE_HEIGHT,
-                                             this.gamePanel)); 
-                break;
-            default:
+                                             this.gamePanel));
+            default -> {
+            }
             
         }
         return false;
     }
     
+//  Método abstrato de ataque de um inimigo.
     public abstract void ataque();
     
     @Override

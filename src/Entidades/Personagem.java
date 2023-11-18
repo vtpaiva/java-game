@@ -11,6 +11,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import javax.imageio.ImageIO;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+
+//  Classe que representa um personagem no painel de jogo, podendo ser um inimigo ou 
+//  o herói.
 public abstract class Personagem extends Entidade implements Serializable{
     private transient BufferedImage rotateSprite;
     
@@ -29,7 +35,7 @@ public abstract class Personagem extends Entidade implements Serializable{
         return rotateSprite;
     }
 
-    public void setRotateSprite(BufferedImage rotateSprite) {
+    public final void setRotateSprite(BufferedImage rotateSprite) {
         this.rotateSprite = rotateSprite;
     }
 
@@ -84,6 +90,8 @@ public abstract class Personagem extends Entidade implements Serializable{
         g2.fillRect(this.getX(), this.getY() - Consts.TILE_HEIGHT, Consts.TILE_WIDTH * this.vida/this.vidaMax, 5);
     }
     
+//  Métodos de salvamento e carregamento de um objeto Personagem.
+    
     private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         if (this.getSprite() != null) {
@@ -100,6 +108,7 @@ public abstract class Personagem extends Entidade implements Serializable{
         this.rotateSprite = ImageIO.read(in);
     }
     
+//  Caso o personagem estaja vivo, atualize-o no painel.
     @Override
     public boolean update() {
         return vida > 0;

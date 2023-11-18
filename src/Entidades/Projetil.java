@@ -3,6 +3,11 @@ package Entidades;
 import Niveis.*;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que representa um projétil no jogo, tendo velocidades iniciais e uma
+//  variável inidicativa da origem do tiro, pelo herói ou por inimigos.
 public class Projetil extends Entidade implements Serializable{
     private int xDeslocamento, yDeslocamento;
     private boolean heroFire;
@@ -44,8 +49,7 @@ public class Projetil extends Entidade implements Serializable{
         this.heroFire = heroFire;
     }
     
-    
-    
+//  Atualiza a posição do projétil a cada frame caso não colida com alguma entidade.
     @Override
     public boolean update(){
         if(!posicaoValida(this.getX() + xDeslocamento, this.getY() + yDeslocamento)) {return false;}

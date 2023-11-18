@@ -11,7 +11,12 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que representa o personagem principal do jogo, o herói.
 public final class Hero extends Personagem implements Serializable{
+//  Variáveis de munição.
     private int ammo, maxAmmo;
     
     public Hero(String path, int linha, int coluna, int vida, int entityWidth, int entityHeight, MyPanel gamePanel, double angle, int ammo) {
@@ -38,6 +43,7 @@ public final class Hero extends Personagem implements Serializable{
         this.maxAmmo = maxAmmo;
     }
     
+//  Método que rotaciona o sprite do herói em relação à posição do mouse.
     public void rotate(Point mouse) {
         BufferedImage rotatedImage = new BufferedImage(this.getSprite().getWidth(), this.getSprite().getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = rotatedImage.createGraphics();
@@ -67,28 +73,13 @@ public final class Hero extends Personagem implements Serializable{
         g2.fillRect(this.getX(), this.getY() - Consts.TILE_HEIGHT, Consts.TILE_WIDTH * this.ammo/this.maxAmmo, 5);
     }
     
-    public void soca() {
-        if(this.getNow() - this.getLast() > 500000000) {
-            Rectangle2D hitPunch = new Rectangle2D.Float((int) MouseInfo.getPointerInfo().getLocation().getX() - this.gamePanel.getX(), 
-                                                         (int) MouseInfo.getPointerInfo().getLocation().getY() - this.gamePanel.getY(), 
-                                                         Consts.TILE_WIDTH, Consts.TILE_HEIGHT);
-
-            for(Personagem i: this.gamePanel.getFaseAtual().getInimigoAtual()) {
-                if(hitPunch.intersects(i.getHitbox())) {
-                    i.setVida(i.getVida() - 1);
-                }
-            }
-            
-            this.setLast(System.nanoTime());
-        }
-    }
-    
+//  Método que lança um projétil do herói.
     public void atira() {
         if(this.ammo > 0 && gamePanel.getHero().getNow() - gamePanel.getHero().getLast() > 50000000) {
             this.gamePanel.addEntidade(new Projetil(
-                                   "caveira.png",
-                                   this.getX(),
-                                  this.getY(),
+                                   "bullet.png",
+                                   this.getX() + 5,
+                                  this.getY() + 5,
                                         (int) (MouseInfo.getPointerInfo().getLocation().getX() - Consts.MAX_WIDTH/2)/5,
                                         (int) (MouseInfo.getPointerInfo().getLocation().getY() - Consts.MAX_HEIGHT/2)/5,
                                 this.gamePanel, true));
@@ -97,6 +88,7 @@ public final class Hero extends Personagem implements Serializable{
         }
     }
     
+//  Método de atualização do herói.
     @Override
     public boolean update() {
         this.setLocation(Consts.MAX_WIDTH/2 - gamePanel.getX(), Consts.MAX_HEIGHT/2 - gamePanel.getY());

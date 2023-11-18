@@ -1,5 +1,10 @@
 package Entidades;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
+//  Classe que representa um corpo no painel, o qual incorpora um Drop não coletável por
+//  definição no jogo.
 public class Corpo extends Drop{
 
     public Corpo(String path, int linha, int coluna, int entityWidth, int entityHeight, MyPanel gamePanel) {
