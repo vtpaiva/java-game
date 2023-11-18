@@ -1,11 +1,14 @@
 package Niveis;
 
+//  Felipe Aparecido da Silva - 11954502.
+//  Vítor Augusto Paiva de Brito - 13732303.
+
 import Entidades.MyPanel;
 import Entidades.*;
-import Controle.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+//  Classe que representa uma fase no jogo, com uma matriz que representa o mapa.
 public class Level implements Serializable{
         private MyPanel panel;
         private int xSpawn, ySpawn;
@@ -99,6 +102,7 @@ public class Level implements Serializable{
             skipAtual.clear();
         }
         
+//  Método que altera o painel com que as entidades do jogo têm contato.
         public void resetLevel(MyPanel gamePanel) {
             for(Entidade e: this.inimigoAtual) {
                 e.setGamePanel(gamePanel);
@@ -117,6 +121,7 @@ public class Level implements Serializable{
             }
         }
         
+//  Método que adiciona os elementos ao mapa de acordo com a matriz de mapa.
         public void makeLevel() {
             for(int i = 0; i < Consts.LEVEL_SCALE * Consts.TILES_Y; i++) {
                 for(int j = 0; j < Consts.LEVEL_SCALE * Consts.TILES_X; j++) {
@@ -125,6 +130,7 @@ public class Level implements Serializable{
             }
         }
         
+//  Função que relaciona um inteiro na matriz do mapa com uma entidade.
         public void entityInt(int i, int linha, int coluna) {
             switch(i){
                 case 1:
@@ -208,22 +214,22 @@ public class Level implements Serializable{
                                                  panel));
                     break;
                 case 11:
-                    inimigoAtual.add(new InimigoBase("enemy.png", 
+                    inimigoAtual.add(new InimigoBase("base.png", 
                                                     linha * Consts.TILE_HEIGHT, 
                                                     coluna * Consts.TILE_WIDTH, 
-                                                    3, Consts.TILE_HEIGHT, Consts.TILE_WIDTH, panel, 0));
+                                                    3, Consts.TILE_HEIGHT, Consts.TILE_WIDTH, panel, Math.PI));
                     break;
                 case 12:
-                    inimigoAtual.add(new Boss("enemy.png", 
-                                                    linha * Consts.TILE_HEIGHT, 
-                                                    coluna * Consts.TILE_WIDTH, 
-                                                    50, Consts.TILE_HEIGHT, Consts.TILE_WIDTH, panel, 0));
+                    inimigoAtual.add(new Boss("boss.png", 
+                                                  linha * Consts.TILE_HEIGHT, 
+                                                  coluna * Consts.TILE_WIDTH, 
+                                                  50, Consts.TILE_WIDTH, Consts.TILE_HEIGHT, panel, Math.PI));
                     break;
                 case 13:
-                    inimigoAtual.add(new InimigoSniper("enemy.png", 
+                    inimigoAtual.add(new InimigoSniper("sniper.png", 
                                                     linha * Consts.TILE_HEIGHT, 
                                                     coluna * Consts.TILE_WIDTH, 
-                                                    3, Consts.TILE_HEIGHT, Consts.TILE_WIDTH, panel, 0));
+                                                    3, Consts.TILE_HEIGHT, Consts.TILE_WIDTH, panel, Math.PI));
                     break;
                 case 14:
                     obstaculoAtual.add(new Obstaculo("bush.png", 
@@ -370,7 +376,7 @@ public class Level implements Serializable{
                                                  panel));
                     break;
                 case 32:
-                    skipAtual.add(new Skip("caveira.png", 
+                    skipAtual.add(new Skip("skip.png", 
                                                          linha * Consts.TILE_HEIGHT, 
                                                          coluna * Consts.TILE_WIDTH,
                                                 Consts.TILE_WIDTH, 
