@@ -43,7 +43,11 @@ public class Movimento implements KeyListener, MouseListener, MouseMotionListene
     
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_R) {panel.setGame();}
+        if(this.getPanel().getGameState() != 3 && e.getKeyCode() == KeyEvent.VK_R) {panel.setGame();}
+        if(this.getPanel().getGameState() == 3 && e.getKeyCode() == KeyEvent.VK_SPACE) {
+            this.getPanel().setGameState(0);
+            this.setListenActive(true);
+        }
         if(!this.listenActive) {return;}
         switch(e.getKeyCode()) {
             case KeyEvent.VK_W -> panel.moveForward();
@@ -73,7 +77,7 @@ public class Movimento implements KeyListener, MouseListener, MouseMotionListene
                                                     3, Consts.CHAR_BASE, Consts.CHAR_BASE, panel, 0));
             }
             case KeyEvent.VK_X -> {
-                panel.addInimigo(new InimigoSniper("enemy.png",
+                panel.addInimigo(new InimigoSniper("sniper.png",
                                                     (int) MouseInfo.getPointerInfo().getLocation().getX() - panel.getX(), 
                                                     (int) MouseInfo.getPointerInfo().getLocation().getY() - panel.getY(), 
                                                     3, Consts.CHAR_BASE, Consts.CHAR_BASE, panel, 0));

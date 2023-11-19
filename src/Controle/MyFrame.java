@@ -17,7 +17,7 @@ public class MyFrame extends JFrame implements Serializable{
         this.setLayout(new FlowLayout());
         this.getContentPane().add(gamePanel);
         this.setResizable(false);
-        this.setPreferredSize(new Dimension(Consts.MAX_RES_WIDTH, Consts.MAX_RES_HEIGHT));
+        this.setPreferredSize(new Dimension(Consts.MAX_WIDTH, Consts.MAX_HEIGHT));
         this.pack();
         this.getContentPane().setBackground(new Color(0, 102, 0) );
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
