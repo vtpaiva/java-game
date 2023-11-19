@@ -5,8 +5,6 @@ package Niveis;
 
 //  Constantes utilizadas no jogo.
 public abstract class Consts {
-    public final static int MAX_RES_WIDTH = 1280;
-    public final static int MAX_RES_HEIGHT = 640;
     public final static int TILE_WIDTH = 32;
     public final static int TILE_HEIGHT = 32;
     public final static int LEVEL_SCALE = 2;
@@ -27,4 +25,5 @@ public abstract class Consts {
     public final static int SNIPER_VISION = 1200;
     public final static int YOU_WIN = 1;
     public final static int GAME_OVER = 2;
+    public final static int TITLE_SCREEN = 3;
 }
