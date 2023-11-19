@@ -108,6 +108,8 @@ public abstract class Personagem extends Entidade implements Serializable{
         this.rotateSprite = ImageIO.read(in);
     }
     
+    public abstract void atira();
+    
 //  Caso o personagem estaja vivo, atualize-o no painel.
     @Override
     public boolean update() {

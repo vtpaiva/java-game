@@ -35,10 +35,11 @@ public class MyPanel extends JPanel implements Serializable{
             hero = new Hero("main.png", this.faseAtual.getxSpawn(), this.faseAtual.getySpawn(), 50, Consts.TILE_WIDTH, Consts.TILE_HEIGHT, this, Math.PI / 2, 200);
             this.faseAtual.makeLevel();
             saveLoad = new SaveLoad(this);
-            this.setPreferredSize(new Dimension(Consts.MAX_RES_WIDTH * 2, Consts.MAX_RES_HEIGHT * 2));
-            this.gameState = 0;
+            this.setPreferredSize(new Dimension(Consts.MAX_WIDTH * Consts.LEVEL_SCALE, Consts.MAX_HEIGHT * Consts.LEVEL_SCALE));
+            this.gameState = 3;
             
             this.observer = new Movimento(this);
+            this.getObserver().setListenActive(false);
             this.addKeyListener(observer);
             this.addMouseListener(observer);
             this.addMouseMotionListener(observer);
@@ -101,12 +102,12 @@ public class MyPanel extends JPanel implements Serializable{
             hero = new Hero("main.png", this.faseAtual.getxSpawn(), this.faseAtual.getySpawn(), 50, Consts.TILE_WIDTH, Consts.TILE_HEIGHT, this, Math.PI / 2, 200);
             this.faseAtual.makeLevel();
             saveLoad = new SaveLoad(this);
-            this.setPreferredSize(new Dimension(Consts.MAX_RES_WIDTH * 2, Consts.MAX_RES_HEIGHT * 2));
+            this.setPreferredSize(new Dimension(Consts.MAX_WIDTH * Consts.LEVEL_SCALE, Consts.MAX_HEIGHT * Consts.LEVEL_SCALE));
             this.gameState = 0;
             
             this.removeKeyListener(observer);
             this.removeMouseListener(observer);
-            this.removeMouseMotionListener(observer);
+            this.removeMouseMotionListener(observer);    
             
             this.observer = new Movimento(this);
             this.addKeyListener(observer);
@@ -275,6 +276,17 @@ public class MyPanel extends JPanel implements Serializable{
             this.hero.setNow(System.nanoTime());
         }
         
+    //  Método de tela no início do jogo.
+        public void titleScreen(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g;
+            
+            g2.setColor(new Color(0, 0, 0, 50));
+            g2.fillRect(0, 0, Consts.MAX_WIDTH * Consts.LEVEL_SCALE, Consts.MAX_HEIGHT * Consts.LEVEL_SCALE);
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30f));
+            g2.drawString("Press space to start", -this.getX() + Consts.MAX_WIDTH / Consts.LEVEL_SCALE - 135, Consts.MAX_HEIGHT / Consts.LEVEL_SCALE - this.getY());
+        }
+        
 //  Método que progride a fase atual do painel.
         public void proximaFase() {
             if(this.fases.indexOf(this.faseAtual) + 1 < this.fases.size()) {
@@ -289,15 +301,24 @@ public class MyPanel extends JPanel implements Serializable{
                 this.hero.setLocation(this.faseAtual.getxSpawn(), this.faseAtual.getySpawn());
             }
             else {
-                youWinScreen();
+                this.setGameState(1);
+                this.getObserver().setListenActive(false);
             }
         }
         
 //  Método de tela em caso de vitória.
-        public void youWinScreen() {
-            this.gameState = 1;
-            this.observer.setListenActive(false);
-            repaint();
+        public void youWinScreen(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g;
+
+            g2.setColor(new Color(0, 0, 0, 50));
+            g2.fillRect(0, 0, Consts.MAX_WIDTH * Consts.LEVEL_SCALE, Consts.MAX_HEIGHT * Consts.LEVEL_SCALE);
+            g2.setColor(Color.yellow);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50f));
+            g2.drawString("You win", this.hero.getX() - 125, this.hero.getY());
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
+            g2.setColor(Color.white);
+            g2.drawString("Felipe Aparecido da Silva", this.hero.getX() - 210, this.hero.getY() + 50);
+            g2.drawString("Vitor Augusto Paiva de Brito", this.hero.getX() - 230, this.hero.getY() + 100);
         }
            
 //  Método de tela em caso de morte.
@@ -357,20 +378,9 @@ public class MyPanel extends JPanel implements Serializable{
                }
                 else {
                     switch(this.gameState) {
-                        case Consts.YOU_WIN -> {
-                            Graphics2D g2 = (Graphics2D) g;
-
-                            g2.setColor(new Color(0, 0, 0, 50));
-                            g2.fillRect(0, 0, Consts.MAX_WIDTH * Consts.LEVEL_SCALE, Consts.MAX_HEIGHT * Consts.LEVEL_SCALE);
-                            g2.setColor(Color.yellow);
-                            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 50f));
-                            g2.drawString("You win", this.hero.getX() - 125, this.hero.getY());
-                            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
-                            g2.setColor(Color.white);
-                            g2.drawString("Felipe Aparecido da Silva", this.hero.getX() - 210, this.hero.getY() + 50);
-                            g2.drawString("Vitor Augusto Paiva de Brito", this.hero.getX() - 230, this.hero.getY() + 100);
-                        }
+                        case Consts.YOU_WIN -> this.youWinScreen(g);
                         case Consts.GAME_OVER -> this.gameOverScreen(g);
+                        case Consts.TITLE_SCREEN -> this.titleScreen(g);
                         default -> {}
                     }
                 }

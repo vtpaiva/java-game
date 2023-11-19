@@ -24,13 +24,7 @@ public final class InimigoBase extends Inimigo implements Serializable{
     @Override
     public void ataque() {
         if(this.getNow() - this.getLast() >= 500000000) {
-            gamePanel.addEntidade(new Projetil("bullet.png",
-                                                this.getX(),
-                                                this.getY(),
-                                                (int) (gamePanel.getHero().getX() - this.getX())/5,
-                                                (int) (gamePanel.getHero().getY() - this.getY())/5,
-                                                gamePanel, false));
-            this.setLast(System.nanoTime());
+            this.atira();
         }
     }
 }

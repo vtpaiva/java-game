@@ -36,14 +36,7 @@ public final class Boss extends Inimigo{
     @Override
     public void ataque() {
         if(this.getNow() - this.getLast() >= 500000000) {
-            gamePanel.addEntidade(new Projetil("bullet.png",
-                                                this.getX(),
-                                                this.getY(),
-                                                (int) (gamePanel.getHero().getX() - this.getX())/2,
-                                                (int) (gamePanel.getHero().getY() - this.getY())/2,
-                                                gamePanel, false));
-            
-            this.setLast(System.nanoTime());
+            this.atira();
         }
         
         if(this.getNow() - this.getSpecial() >= 2200000000L) {

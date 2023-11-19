@@ -26,13 +26,7 @@ public class InimigoSniper extends Inimigo implements Serializable{
     @Override
     public void ataque() {
         if(this.getNow() - this.getLast() >= 2000000000L) {
-            gamePanel.addEntidade(new Projetil("bullet.png",
-                                                this.getX(),
-                                                this.getY(),
-                                                (int) (gamePanel.getHero().getX() - this.getX())/2,
-                                                (int) (gamePanel.getHero().getY() - this.getY())/2,
-                                                gamePanel, false));
-            this.setLast(System.nanoTime());
+            this.atira();
         }
     }
 }

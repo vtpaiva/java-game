@@ -193,6 +193,17 @@ public abstract class Inimigo extends Personagem implements Serializable{
 //  Método abstrato de ataque de um inimigo.
     public abstract void ataque();
     
+    public void atira() {
+            gamePanel.addEntidade(new Projetil("bullet.png",
+                                                this.getX(),
+                                                this.getY(),
+                                                (int) (gamePanel.getHero().getX() - this.getX())/2,
+                                                (int) (gamePanel.getHero().getY() - this.getY())/2,
+                                                gamePanel, false));
+            
+            this.setLast(System.nanoTime());
+    }
+    
     @Override
     public boolean update() {
         if(hunt) {
