@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="JogoBrabo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JogoBrabo_jar</output-path>
+    <root id="archive" name="JogoBrabo.jar">
+      <element id="module-output" name="JogoBrabo" />
+    </root>
+  </artifact>
+</component>
