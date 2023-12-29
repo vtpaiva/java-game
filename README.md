@@ -21,5 +21,3 @@ Para jogar, elimine todos os inimigos da fase atual e, após isso, vá até o c�
 |            **A**           | Movimentar no sentido anti-horário em relação ao mouse |
 |            **S**           |         Movimentar na direção inversa ao mouse         |
 |            **D**           |    Movimentar no sentido horário em relação ao mouse   |
-
-***Bom jogo!***
