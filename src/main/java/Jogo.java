@@ -1,5 +1,3 @@
-package Controle;
-
 //  Felipe Aparecido da Silva - 11954502.
 //  Vítor Augusto Paiva de Brito - 13732303.
 

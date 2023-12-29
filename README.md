@@ -1,4 +1,10 @@
 # SCC0604-POO-2023.2
-Jogo da disciplina de Programação Orientada a Objetos.
+Jogo da disciplina ***SSC004 - Programação Orientada a Objetos***.
 
-http://www.dropbox.com/sh/dh431ggetqals39/AAAQB2VOTQhgla9E1Le3hYCya?dl=0
+Para executar o jogo, clone o repositório em um diretório e, com o *JDK 17* ou superior instalado, execute o comando.
+
+```
+java -jar Jogo.jar
+```
+
+O código fonte do programa está na pasta ``src``.
