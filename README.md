@@ -1,23 +1,32 @@
-# SCC0604-POO-2023.2
-Jogo da disciplina ***SSC004 - Programação Orientada a Objetos***.
 
-Para executar o jogo, clone o repositório em um diretório e, com o *JDK 17* ou superior instalado, execute o comando.
+# java-shooter-game
+
+To run the game, clone the repository into a directory, and with *JDK 17* or higher installed, execute the command:
 
 ```
 java -jar Jogo.jar
 ```
 
-O código fonte do programa está na pasta ``src``.
+The program's source code is in the `src` folder.
 
-## Como jogar
+<div align = "center">
+        <img src="img/gameplay.gif" 
+                alt="Picture" 
+                width="auto" 
+                height="300" 
+                style="border-radius: 5px"
+                style="display: block; margin: 0 auto" />
+</div>
 
-Para jogar, elimine todos os inimigos da fase atual e, após isso, vá até o círculo próximo ao helicóptero nos cantos superiores da fase. A barras acima do personagem representam a vida, representada pela barra verde, e a munição, representada pela barra amarela. Os inimigos, ao morrer deixam munição e vida para trás.
+## How to Play
 
-|         **_Tecla_**        |                       **_Ação_**                       |
+To play, eliminate all enemies in the current level, and after that, move to the circle near the helicopter in the upper corners of the level. The bars above the character represent health, shown by the green bar, and ammunition, shown by the yellow bar. Enemies drop ammunition and health when they die.
+
+|         **_Key_**          |                       **_Action_**                     |
 |:--------------------------:|:------------------------------------------------------:|
-|    **Mouse (Movimento)**   |                          Mirar                         |
-| **Mouse (Botão esquerdo)** |                         Atirar                         |
-|            **W**           |             Movimentar em direção ao mouse             |
-|            **A**           | Movimentar no sentido anti-horário em relação ao mouse |
-|            **S**           |         Movimentar na direção inversa ao mouse         |
-|            **D**           |    Movimentar no sentido horário em relação ao mouse   |
+|    **Mouse (Movement)**    |                          Aim                           |
+| **Mouse (Left Button)**    |                        Shoot                           |
+|            **W**           |            Move toward the mouse direction             |
+|            **A**           |  Move counterclockwise relative to the mouse direction |
+|            **S**           |        Move in the opposite direction of the mouse     |
+|            **D**           |  Move clockwise relative to the mouse direction        |
