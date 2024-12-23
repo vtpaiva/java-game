@@ -16,8 +16,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa uma instância de entidade no painel de jogo, podendo ser o herói,
 //  inimigos, obstaculos ou Drops. Toda entidade possui uma hitbox, uma representação visual e

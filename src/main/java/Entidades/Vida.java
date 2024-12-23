@@ -1,7 +1,6 @@
 package Entidades;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa um power-up de vida no jogo.
 public class Vida extends Drop {

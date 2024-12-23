@@ -3,8 +3,7 @@ package Entidades;
 import Niveis.*;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa um instância de inimigo sniper do jogo, possuindo 
 //  alcance e tempo de recarregamento maiorss.

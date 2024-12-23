@@ -14,8 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa o painel do jogo, no qual as entidades são
 //  atualizadas e mostradas.
@@ -317,8 +316,6 @@ public class MyPanel extends JPanel implements Serializable{
             g2.drawString("You win", this.hero.getX() - 125, this.hero.getY());
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
             g2.setColor(Color.white);
-            g2.drawString("Felipe Aparecido da Silva", this.hero.getX() - 210, this.hero.getY() + 50);
-            g2.drawString("Vitor Augusto Paiva de Brito", this.hero.getX() - 230, this.hero.getY() + 100);
         }
            
 //  Método de tela em caso de morte.

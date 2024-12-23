@@ -2,8 +2,7 @@ package Entidades;
 
 import Niveis.*;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa o inimigo final do jogo.
 public final class Boss extends Inimigo{

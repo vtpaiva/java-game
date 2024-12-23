@@ -11,8 +11,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import javax.imageio.ImageIO;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 
 //  Classe que representa um personagem no painel de jogo, podendo ser um inimigo ou 

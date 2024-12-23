@@ -3,8 +3,7 @@ package Entidades;
 import Niveis.*;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa uma instância de inimigo base no jogo.
 public final class InimigoBase extends Inimigo implements Serializable{

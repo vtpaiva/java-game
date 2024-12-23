@@ -1,7 +1,6 @@
 package Niveis;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 import Entidades.MyPanel;
 import Entidades.*;

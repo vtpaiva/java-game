@@ -8,8 +8,7 @@ import java.awt.FlowLayout;
 import java.io.Serializable;
 import javax.swing.JFrame;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa a tela do jogo.
 public class MyFrame extends JFrame implements Serializable{

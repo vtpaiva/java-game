@@ -10,8 +10,7 @@ import java.util.Random;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa um inimigo do painel de jogo, o qual possui uma alcance de
 //  de tiro, um alcance de visão, o qual de tecta o herói e uma variável que

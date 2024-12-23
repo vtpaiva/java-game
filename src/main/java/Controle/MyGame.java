@@ -4,8 +4,7 @@ import Niveis.*;
 import Entidades.MyPanel;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa o jogo, unindo a tela ao painel e executando uma Thread
 //  de execução do jogo.

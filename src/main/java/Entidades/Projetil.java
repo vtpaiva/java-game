@@ -3,8 +3,7 @@ package Entidades;
 import Niveis.*;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Classe que representa um projétil no jogo, tendo velocidades iniciais e uma
 //  variável inidicativa da origem do tiro, pelo herói ou por inimigos.

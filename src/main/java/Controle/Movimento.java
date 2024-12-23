@@ -12,8 +12,7 @@ import java.awt.event.MouseMotionListener;
 import java.io.IOException;
 import java.io.Serializable;
 
-//  Felipe Aparecido da Silva - 11954502.
-//  Vítor Augusto Paiva de Brito - 13732303.
+
 
 //  Instância de listener que monitora a entrada do usuário.
 public class Movimento implements KeyListener, MouseListener, MouseMotionListener, Serializable{
